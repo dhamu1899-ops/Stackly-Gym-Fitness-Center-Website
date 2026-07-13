@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Dashboard — Stackly</title>
+<meta name="description" content="Stackly admin dashboard — manage members, trainers, classes and revenue." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="loader" role="status" aria-live="polite">
+  <div class="loader-inner">
+    <div class="loader-logo">STACK<span>LY</span></div>
+    <div class="loader-spinner">
+      <svg viewBox="0 0 100 100">
+        <circle class="track" cx="50" cy="50" r="42"></circle>
+        <circle class="active" cx="50" cy="50" r="42"></circle>
+      </svg>
+    </div>
+    <div class="loader-text">Loading admin console…</div>
+  </div>
+</div>
+
+<div class="dash-body">
+
+  <aside class="dash-sidebar">
+    <a href="index.html" class="nav-logo"><span class="bolt"><img src="assets/logo-mark.svg" alt="" class="logo-mark" /></span>STACK<span class="brand-alt">LY</span></a>
+    <nav class="dash-nav">
+      <a href="#" class="active" data-view="overview"><i class="fa-solid fa-grip"></i> Overview</a>
+      <a href="#" data-view="members"><i class="fa-solid fa-users"></i> Members</a>
+      <a href="#" data-view="trainers"><i class="fa-solid fa-person-chalkboard"></i> Trainers</a>
+      <a href="#" data-view="classes"><i class="fa-solid fa-calendar-days"></i> Classes</a>
+      <a href="#" data-view="revenue"><i class="fa-solid fa-sack-dollar"></i> Revenue</a>
+      <div class="dash-nav-group-label">System</div>
+      <a href="#" data-view="settings"><i class="fa-solid fa-gear"></i> Settings</a>
+      <a href="#" data-view="access"><i class="fa-solid fa-shield-halved"></i> Access Control</a>
+    </nav>
+    <div class="dash-sidebar-footer">
+      <div class="dash-user-card">
+        <div class="dash-user-avatar">AD</div>
+        <div>
+          <strong>Anita Desai</strong>
+          <span>Facility Admin</span>
+        </div>
+      </div>
+      <a href="index.html" class="dash-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a>
+    </div>
+  </aside>
+
+  <div class="dash-main">
+    <div class="dash-topbar">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <button class="dash-sidebar-toggle" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <h1>Admin Dashboard</h1>
+          <div class="dash-date">Monday, July 13, 2026</div>
+        </div>
+      </div>
+      <div class="dash-topbar-actions">
+        <button class="dash-icon-btn" aria-label="Notifications"><i class="fa-solid fa-bell"></i><span class="dot"></span></button>
+        <div class="dash-user-avatar">AD</div>
+      </div>
+    </div>
+
+    <div class="dash-content">
+
+      <div data-view-panel="overview">
+      <div class="kpi-grid">
+        <div class="kpi-card reveal reveal-delay-1">
+          <div class="kpi-top">
+            <div class="kpi-icon"><i class="fa-solid fa-users"></i></div>
+            <span class="kpi-trend up"><i class="fa-solid fa-arrow-up"></i> 6.2%</span>
+          </div>
+          <div class="kpi-value">8,542</div>
+          <div class="kpi-label">Total Members</div>
+        </div>
+        <div class="kpi-card reveal reveal-delay-2">
+          <div class="kpi-top">
+            <div class="kpi-icon gold"><i class="fa-solid fa-sack-dollar"></i></div>
+            <span class="kpi-trend up"><i class="fa-solid fa-arrow-up"></i> 9.8%</span>
+          </div>
+          <div class="kpi-value">₹6.85L</div>
+          <div class="kpi-label">Monthly Revenue</div>
+        </div>
+        <div class="kpi-card reveal reveal-delay-3">
+          <div class="kpi-top">
+            <div class="kpi-icon teal"><i class="fa-solid fa-person-chalkboard"></i></div>
+            <span class="kpi-trend up"><i class="fa-solid fa-arrow-up"></i> 3</span>
+          </div>
+          <div class="kpi-value">48</div>
+          <div class="kpi-label">Active Trainers</div>
+        </div>
+        <div class="kpi-card reveal reveal-delay-4">
+          <div class="kpi-top">
+            <div class="kpi-icon"><i class="fa-solid fa-calendar-check"></i></div>
+            <span class="kpi-trend down"><i class="fa-solid fa-arrow-down"></i> 2</span>
+          </div>
+          <div class="kpi-value">21</div>
+          <div class="kpi-label">Classes Today</div>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <div class="dash-card reveal">
+          <div class="dash-card-head">
+            <h3>Revenue &amp; New Members</h3>
+            <div class="chart-legend">
+              <span><span class="dot" style="background:#ed1b2e;"></span> Revenue</span>
+              <span><span class="dot" style="background:#14151d;"></span> New Members</span>
+            </div>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="revenueChart"></canvas>
+          </div>
+        </div>
+
+        <div class="dash-card reveal">
+          <div class="dash-card-head">
+            <h3>Membership Mix</h3>
+          </div>
+          <div class="chart-canvas-wrap" style="height:200px;">
+            <canvas id="membershipChart"></canvas>
+          </div>
+          <div style="display:grid; gap:10px; margin-top:16px;">
+            <div class="goal-row-top"><span><span class="dot" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#e0a83a;margin-right:8px;"></span>Basic</span><span>38%</span></div>
+            <div class="goal-row-top"><span><span class="dot" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#ed1b2e;margin-right:8px;"></span>Pro</span><span>45%</span></div>
+            <div class="goal-row-top"><span><span class="dot" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#14151d;margin-right:8px;"></span>Elite</span><span>17%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-card reveal">
+        <div class="dash-card-head">
+          <h3>Recent Members</h3>
+          <a href="#" class="view-all">View All</a>
+        </div>
+        <div class="dash-table-wrap">
+          <table class="dash-table">
+            <thead>
+              <tr>
+                <th>Member</th>
+                <th>Plan</th>
+                <th>Joined</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="table-user-cell">
+                    <div class="table-avatar">RS</div>
+                    <div><strong>Rahul Sharma</strong><br><span>rahul.sharma@email.com</span></div>
+                  </div>
+                </td>
+                <td>Pro</td>
+                <td>12 Jul 2026</td>
+                <td><span class="status-chip active">Active</span></td>
+                <td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user-cell">
+                    <div class="table-avatar">MK</div>
+                    <div><strong>Meera Krishnan</strong><br><span>meera.k@email.com</span></div>
+                  </div>
+                </td>
+                <td>Elite</td>
+                <td>10 Jul 2026</td>
+                <td><span class="status-chip active">Active</span></td>
+                <td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user-cell">
+                    <div class="table-avatar">AV</div>
+                    <div><strong>Arjun Verma</strong><br><span>arjun.v@email.com</span></div>
+                  </div>
+                </td>
+                <td>Basic</td>
+                <td>08 Jul 2026</td>
+                <td><span class="status-chip pending">Pending Payment</span></td>
+                <td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user-cell">
+                    <div class="table-avatar">PN</div>
+                    <div><strong>Pooja Nair</strong><br><span>pooja.nair@email.com</span></div>
+                  </div>
+                </td>
+                <td>Pro</td>
+                <td>03 Jul 2026</td>
+                <td><span class="status-chip active">Active</span></td>
+                <td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user-cell">
+                    <div class="table-avatar">KT</div>
+                    <div><strong>Karan Thakur</strong><br><span>karan.t@email.com</span></div>
+                  </div>
+                </td>
+                <td>Basic</td>
+                <td>29 Jun 2026</td>
+                <td><span class="status-chip expired">Expired</span></td>
+                <td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="dash-card reveal" style="margin-top:20px;">
+        <div class="dash-card-head">
+          <h3>Trainer Roster</h3>
+          <a href="#" class="view-all">Manage</a>
+        </div>
+        <div class="dash-table-wrap">
+          <table class="dash-table">
+            <thead>
+              <tr>
+                <th>Trainer</th>
+                <th>Specialty</th>
+                <th>Classes / Week</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="table-user-cell">
+                    <div class="table-avatar">MR</div>
+                    <div><strong>Marcus Reed</strong></div>
+                  </div>
+                </td>
+                <td>Strength &amp; Conditioning</td>
+                <td>12</td>
+                <td><span class="status-chip active">Active</span></td>
+                <td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user-cell">
+                    <div class="table-avatar">EC</div>
+                    <div><strong>Elena Cruz</strong></div>
+                  </div>
+                </td>
+                <td>HIIT &amp; Cardio</td>
+                <td>15</td>
+                <td><span class="status-chip active">Active</span></td>
+                <td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user-cell">
+                    <div class="table-avatar">PN</div>
+                    <div><strong>Priya Nair</strong></div>
+                  </div>
+                </td>
+                <td>Yoga &amp; Mobility</td>
+                <td>10</td>
+                <td><span class="status-chip pending">On Leave</span></td>
+                <td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+
+      <div data-view-panel="members" style="display:none;">
+        <div class="dash-view-head"><h3>All Members</h3><span class="badge-pill"><i class="fa-solid fa-users"></i> 8,542 total</span></div>
+        <div class="dash-card">
+          <div class="dash-table-wrap">
+            <table class="dash-table">
+              <thead><tr><th>Member</th><th>Plan</th><th>Joined</th><th>Status</th><th></th></tr></thead>
+              <tbody>
+                <tr><td><div class="table-user-cell"><div class="table-avatar">RS</div><div><strong>Rahul Sharma</strong><br><span>rahul.sharma@email.com</span></div></div></td><td>Pro</td><td>12 Jul 2026</td><td><span class="status-chip active">Active</span></td><td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td></tr>
+                <tr><td><div class="table-user-cell"><div class="table-avatar">MK</div><div><strong>Meera Krishnan</strong><br><span>meera.k@email.com</span></div></div></td><td>Elite</td><td>10 Jul 2026</td><td><span class="status-chip active">Active</span></td><td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td></tr>
+                <tr><td><div class="table-user-cell"><div class="table-avatar">AV</div><div><strong>Arjun Verma</strong><br><span>arjun.v@email.com</span></div></div></td><td>Basic</td><td>08 Jul 2026</td><td><span class="status-chip pending">Pending Payment</span></td><td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td></tr>
+                <tr><td><div class="table-user-cell"><div class="table-avatar">PN</div><div><strong>Pooja Nair</strong><br><span>pooja.nair@email.com</span></div></div></td><td>Pro</td><td>03 Jul 2026</td><td><span class="status-chip active">Active</span></td><td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td></tr>
+                <tr><td><div class="table-user-cell"><div class="table-avatar">KT</div><div><strong>Karan Thakur</strong><br><span>karan.t@email.com</span></div></div></td><td>Basic</td><td>29 Jun 2026</td><td><span class="status-chip expired">Expired</span></td><td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td></tr>
+                <tr><td><div class="table-user-cell"><div class="table-avatar">SV</div><div><strong>Sanjay Verma</strong><br><span>sanjay.v@email.com</span></div></div></td><td>Elite</td><td>24 Jun 2026</td><td><span class="status-chip active">Active</span></td><td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div data-view-panel="trainers" style="display:none;">
+        <div class="dash-view-head"><h3>Trainer Directory</h3><a href="#" class="view-all">Add Trainer</a></div>
+        <div class="trainer-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div class="trainer-card"><div class="trainer-photo photo"><img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fm=webp&fit=crop&w=400&q=70" alt="Marcus Reed" loading="lazy" /></div><div class="trainer-info"><h3>Marcus Reed</h3><span>Strength Coach</span></div></div>
+          <div class="trainer-card"><div class="trainer-photo photo"><img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fm=webp&fit=crop&w=400&q=70" alt="Elena Cruz" loading="lazy" /></div><div class="trainer-info"><h3>Elena Cruz</h3><span>HIIT & Cardio</span></div></div>
+          <div class="trainer-card"><div class="trainer-photo photo"><img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?auto=format&fm=webp&fit=crop&w=400&q=70" alt="Priya Nair" loading="lazy" /></div><div class="trainer-info"><h3>Priya Nair</h3><span>Yoga & Mobility</span></div></div>
+        </div>
+      </div>
+
+      <div data-view-panel="classes" style="display:none;">
+        <div class="dash-view-head"><h3>Class Schedule</h3><a href="#" class="view-all">Add Class</a></div>
+        <div class="schedule-wrap">
+          <div class="schedule-table-scroll">
+            <table class="schedule-table">
+              <thead><tr><th>Time</th><th>Class</th><th>Trainer</th><th>Location</th><th>Booked</th></tr></thead>
+              <tbody>
+                <tr><td>6:00 AM</td><td class="schedule-class-name">Strength Fundamentals</td><td>Marcus Reed</td><td>Strength Floor</td><td>18/20</td></tr>
+                <tr><td>8:00 AM</td><td class="schedule-class-name">Power Yoga</td><td>Priya Nair</td><td>Studio A</td><td>12/15</td></tr>
+                <tr><td>6:30 PM</td><td class="schedule-class-name">HIIT Circuit</td><td>Elena Cruz</td><td>Studio B</td><td>20/20</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div data-view-panel="revenue" style="display:none;">
+        <div class="dash-view-head"><h3>Revenue Breakdown</h3><span class="badge-pill"><i class="fa-solid fa-sack-dollar"></i> ₹6.85L this month</span></div>
+        <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div class="kpi-card"><div class="kpi-top"><div class="kpi-icon"><i class="fa-solid fa-id-card"></i></div></div><div class="kpi-value">₹4.1L</div><div class="kpi-label">Memberships</div></div>
+          <div class="kpi-card"><div class="kpi-top"><div class="kpi-icon gold"><i class="fa-solid fa-person-chalkboard"></i></div></div><div class="kpi-value">₹1.9L</div><div class="kpi-label">Personal Training</div></div>
+          <div class="kpi-card"><div class="kpi-top"><div class="kpi-icon teal"><i class="fa-solid fa-apple-whole"></i></div></div><div class="kpi-value">₹0.85L</div><div class="kpi-label">Nutrition Add-ons</div></div>
+        </div>
+      </div>
+
+      <div data-view-panel="settings" style="display:none;">
+        <div class="dash-view-head"><h3>Facility Settings</h3></div>
+        <div class="dash-card" style="max-width:520px;">
+          <div class="field"><label for="set-name">Facility Name</label><input type="text" id="set-name" value="Stackly — Iron Yard Road" /></div>
+          <div class="field"><label for="set-tz">Timezone</label><input type="text" id="set-tz" value="Asia/Kolkata (IST)" /></div>
+          <div class="field"><label for="set-currency">Currency</label><input type="text" id="set-currency" value="INR (₹)" /></div>
+          <button type="button" class="btn btn-primary">Save Settings</button>
+        </div>
+      </div>
+
+      <div data-view-panel="access" style="display:none;">
+        <div class="dash-view-head"><h3>Access Control</h3><a href="#" class="view-all">Invite Staff</a></div>
+        <div class="dash-table-wrap">
+          <table class="dash-table">
+            <thead><tr><th>Staff</th><th>Role</th><th>Access Level</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><div class="table-user-cell"><div class="table-avatar">AD</div><div><strong>Anita Desai</strong></div></div></td><td>Facility Admin</td><td><span class="status-chip active">Full Access</span></td><td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td></tr>
+              <tr><td><div class="table-user-cell"><div class="table-avatar">MR</div><div><strong>Marcus Reed</strong></div></div></td><td>Trainer</td><td><span class="status-chip pending">Limited</span></td><td><a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Login — Stackly</title>
+<meta name="description" content="Log in to your Stackly member account to book classes, track progress and manage your membership." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="loader" role="status" aria-live="polite">
+  <div class="loader-inner">
+    <div class="loader-logo">STACK<span>LY</span></div>
+    <div class="loader-spinner"><svg viewBox="0 0 100 100"><circle class="track" cx="50" cy="50" r="42"></circle><circle class="active" cx="50" cy="50" r="42"></circle></svg></div>
+    <div class="loader-text">Loading…</div>
+  </div>
+</div>
+
+<main class="auth-page">
+  <a href="index.html" class="auth-close" aria-label="Close and return to home"><i class="fa-solid fa-xmark"></i></a>
+  <div class="auth-visual">
+    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fm=webp&fit=crop&w=1200&q=70" alt="Athlete training at Stackly" loading="lazy" />
+    <div class="auth-visual-content">
+      <a href="index.html" class="nav-logo"><span class="bolt"><img src="assets/logo-mark.svg" alt="" class="logo-mark" /></span>STACK<span class="brand-alt">LY</span></a>
+      <h2>Welcome Back. Let's Get Moving.</h2>
+      <p>Log in to book classes, track your progress and manage your membership — all in one place.</p>
+    </div>
+  </div>
+
+  <div class="auth-form-side">
+    <div class="auth-form-box">
+      <span class="eyebrow">Member Login</span>
+      <h1>Log In</h1>
+      <p>New to Stackly? <a href="signup.html" style="color:var(--accent); font-weight:600;">Create an account</a></p>
+
+      <form id="login-form" novalidate>
+        <div class="role-toggle">
+          <input type="radio" id="role-user" name="role" value="user" checked />
+          <label for="role-user"><i class="fa-solid fa-user"></i> Member Login</label>
+          <input type="radio" id="role-admin" name="role" value="admin" />
+          <label for="role-admin"><i class="fa-solid fa-user-shield"></i> Admin Login</label>
+        </div>
+
+        <div class="field">
+          <label for="login-email">Email Address</label>
+          <input type="email" id="login-email" name="email" placeholder="you@example.com" autocomplete="email" required />
+          <span class="error-msg">Enter a valid email address.</span>
+        </div>
+
+        <div class="field password-field">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" placeholder="Enter your password" autocomplete="current-password" required />
+          <button type="button" class="password-toggle" data-target="login-password" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+          <span class="error-msg">Password must be at least 6 characters.</span>
+        </div>
+
+        <div class="form-row-split">
+          <label class="checkbox-row"><input type="checkbox" name="remember" /> Remember me</label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Log In</button>
+        <div class="form-status"></div>
+      </form>
+
+      <div class="auth-divider">or continue with</div>
+      <div class="social-auth">
+        <button type="button"><i class="fa-brands fa-google"></i> Google</button>
+        <button type="button"><i class="fa-brands fa-apple"></i> Apple</button>
+      </div>
+
+      <p class="auth-switch">Select "Admin Login" above to sign in as facility staff.</p>
+    </div>
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

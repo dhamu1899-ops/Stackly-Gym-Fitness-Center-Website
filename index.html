@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stackly — Gym & Fitness Center</title>
+<meta name="description" content="Stackly is a high-performance gym and fitness center. Join for strength training, HIIT, yoga and personal coaching with expert trainers." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="loader" role="status" aria-live="polite">
+  <div class="loader-inner">
+    <div class="loader-logo">STACK<span>LY</span></div>
+    <div class="loader-spinner">
+      <svg viewBox="0 0 100 100">
+        <circle class="track" cx="50" cy="50" r="42"></circle>
+        <circle class="active" cx="50" cy="50" r="42"></circle>
+      </svg>
+    </div>
+    <div class="loader-text">Loading your training zone…</div>
+  </div>
+</div>
+
+<!-- ================= TOPBAR ================= -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-meta">
+      <span><i class="fa-solid fa-phone"></i> +91 98765 43210</span>
+      <span><i class="fa-solid fa-envelope"></i> hello@stackly.com</span>
+      <span><i class="fa-solid fa-location-dot"></i> 24 Iron Yard Road, Bengaluru</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><span class="bolt"><img src="assets/logo-mark.svg" alt="" class="logo-mark" /></span>STACK<span class="brand-alt">LY</span></a>
+
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="trainers.html" class="nav-link">Trainers</a></li>
+      <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="login.html" class="nav-icon-btn" aria-label="Login"><i class="fa-solid fa-user"></i></a>
+      <a href="signup.html" class="btn btn-primary">Join Now</a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= MOBILE OVERLAY MENU ================= -->
+<div class="mobile-overlay">
+  <ul class="mobile-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="trainers.html">Trainers</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-actions">
+    <a href="login.html" class="btn btn-outline btn-block">Login</a>
+    <a href="signup.html" class="btn btn-primary btn-block">Join Now</a>
+  </div>
+  <div class="mobile-meta">
+    <span><i class="fa-solid fa-phone"></i>&nbsp; +91 98765 43210</span>
+    <span><i class="fa-solid fa-envelope"></i>&nbsp; hello@stackly.com</span>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-eyebrow"><i class="fa-solid fa-bolt"></i> Keep Your Body Fit With Workouts</span>
+      <h1>Ready To Train<br>Your <span>Body</span></h1>
+      <p>Stackly is a performance-driven training facility built for people who want real results — strength coaching, HIIT, recovery and nutrition guidance under one roof.</p>
+      <div class="hero-actions">
+        <a href="pricing.html" class="btn btn-primary btn-lg">View Class Schedule</a>
+        <a href="#" class="hero-play"><span class="play-circle"><i class="fa-solid fa-play"></i></span> Watch Video</a>
+      </div>
+      <div class="hero-stats-row">
+        <div class="stat-block"><strong data-count="2400">0</strong><span>Members</span></div>
+        <div class="stat-block"><strong data-count="48">0</strong><span>Trainers</span></div>
+        <div class="stat-block"><strong data-count="12">0</strong><span>Years</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <i class="fa-solid fa-dumbbell hero-float-icon i1"></i>
+      <i class="fa-solid fa-heart-pulse hero-float-icon i2"></i>
+      <i class="fa-solid fa-bolt hero-float-icon i3"></i>
+      <div class="hero-photo-frame photo">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fm=webp&fit=crop&w=900&q=80" alt="Athlete training with dumbbells" loading="lazy" />
+      </div>
+      <div class="hero-badge-float">
+        <span class="badge-icon"><i class="fa-solid fa-trophy"></i></span>
+        <div><strong>2,400+</strong><span>Satisfied Members</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BMI CALCULATOR BAR ================= -->
+<section class="bmi-bar">
+  <div class="container">
+    <form class="bmi-card" id="bmi-form">
+      <div class="bmi-title"><strong>Free BMI Calculator</strong><span>Check where you stand</span></div>
+      <div class="bmi-field"><label for="bmi-weight">Weight / KG</label><input type="number" id="bmi-weight" placeholder="70" step="0.1" required /></div>
+      <div class="bmi-field"><label for="bmi-height">Height / CM</label><input type="number" id="bmi-height" placeholder="175" step="0.1" required /></div>
+      <div class="bmi-result"><span id="bmi-result-label">Your BMI</span><strong id="bmi-result-value">--</strong></div>
+      <button type="submit" class="btn btn-primary">Calculate</button>
+    </form>
+  </div>
+</section>
+
+<!-- ================= ABOUT TEASER ================= -->
+<section class="about-teaser">
+  <div class="container">
+    <div class="teaser-media">
+      <div class="teaser-exp-badge"><strong>12+</strong><span>Years Exp.</span></div>
+      <div class="teaser-photo-main photo">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fm=webp&fit=crop&w=800&q=80" alt="Trainer coaching a client" loading="lazy" />
+      </div>
+      <div class="teaser-photo-float photo">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fm=webp&fit=crop&w=500&q=80" alt="Close up of gym equipment" loading="lazy" />
+      </div>
+    </div>
+    <div class="teaser-content">
+      <span class="eyebrow">About Stackly</span>
+      <h2>We Have A Lot Of Experience In Gym Training</h2>
+      <p>Every program at Stackly is built by certified coaches around your goals — whether that's raw strength, fat loss, mobility or competition prep. No guesswork, just a plan that adapts to you.</p>
+      <ul class="teaser-list">
+        <li><i class="fa-solid fa-check"></i> Certified strength & conditioning coaches</li>
+        <li><i class="fa-solid fa-check"></i> Personalized workout & nutrition plans</li>
+        <li><i class="fa-solid fa-check"></i> Modern equipment, sanitized daily</li>
+      </ul>
+      <a href="about.html" class="btn btn-dark">Discover More</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats-row">
+  <div class="container">
+    <div class="stat-item"><i class="fa-solid fa-dumbbell"></i><span class="stat-num" data-count="2400">0</span><span class="stat-label">Happy Members</span></div>
+    <div class="stat-item"><i class="fa-solid fa-medal"></i><span class="stat-num" data-count="48">0</span><span class="stat-label">Expert Trainers</span></div>
+    <div class="stat-item"><i class="fa-solid fa-calendar-check"></i><span class="stat-num" data-count="180">0</span><span class="stat-label">Classes / Month</span></div>
+    <div class="stat-item"><i class="fa-solid fa-trophy"></i><span class="stat-num" data-count="12">0</span><span class="stat-label">Years Running</span></div>
+  </div>
+</section>
+
+<!-- ================= PROCESS STEPS ================= -->
+<section class="process-steps">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">How It Works</span>
+      <h2>Easy Steps To Achieve Your Goals</h2>
+      <p>Getting started at Stackly takes three simple steps — no confusing contracts, no pressure.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-card reveal reveal-delay-1"><span class="process-num">01</span><div class="process-icon"><i class="fa-solid fa-user-plus"></i></div><h3>Join The Club</h3><p>Pick a plan and create your account in under two minutes.</p></div>
+      <div class="process-card reveal reveal-delay-2"><span class="process-num">02</span><div class="process-icon"><i class="fa-solid fa-clipboard-list"></i></div><h3>Get Your Plan</h3><p>A coach builds your personalized training & nutrition plan.</p></div>
+      <div class="process-card reveal reveal-delay-3"><span class="process-num">03</span><div class="process-icon"><i class="fa-solid fa-chart-line"></i></div><h3>Track Progress</h3><p>Log workouts, watch your numbers climb, hit your goals.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="services-section" style="padding:100px 0;">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">What We Offer</span>
+      <h2>Our Gym Fitness Classes</h2>
+      <p>Nine focused programs covering strength, conditioning, recovery and everything between.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-icon-card reveal reveal-delay-1"><div class="service-icon"><i class="fa-solid fa-dumbbell"></i></div><h3>Strength Training</h3><p>Progressive overload programs to build raw, functional strength.</p><a href="services.html#strength" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="service-icon-card reveal reveal-delay-2"><div class="service-icon"><i class="fa-solid fa-heart-pulse"></i></div><h3>Cardio & HIIT</h3><p>High-intensity intervals that torch calories and build endurance.</p><a href="services.html#cardio" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="service-icon-card reveal reveal-delay-3"><div class="service-icon"><i class="fa-solid fa-spa"></i></div><h3>Yoga & Mobility</h3><p>Improve flexibility, balance, and recovery between hard sessions.</p><a href="services.html#yoga" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="service-icon-card reveal reveal-delay-4"><div class="service-icon"><i class="fa-solid fa-person-chalkboard"></i></div><h3>Personal Training</h3><p>1-on-1 coaching tailored to your exact goals and schedule.</p><a href="services.html#personal" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="service-icon-card reveal reveal-delay-5"><div class="service-icon"><i class="fa-solid fa-people-group"></i></div><h3>Group Classes</h3><p>High-energy group sessions that keep you motivated and consistent.</p><a href="services.html#group" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="service-icon-card reveal reveal-delay-6"><div class="service-icon"><i class="fa-solid fa-apple-whole"></i></div><h3>Nutrition Coaching</h3><p>Meal plans and macro guidance built around your training load.</p><a href="services.html#nutrition" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="service-icon-card reveal reveal-delay-1"><div class="service-icon"><i class="fa-solid fa-weight-hanging"></i></div><h3>Powerlifting</h3><p>Squat, bench and deadlift technique coaching for serious lifters.</p><a href="services.html" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="service-icon-card reveal reveal-delay-2"><div class="service-icon"><i class="fa-solid fa-water"></i></div><h3>Recovery & Mobility</h3><p>Foam rolling, stretching and mobility drills to prevent injury.</p><a href="services.html" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a></div>
+      <div class="service-icon-card reveal reveal-delay-3"><div class="service-icon"><i class="fa-solid fa-child-reaching"></i></div><h3>Youth Fitness</h3><p>Age-appropriate strength and movement programs for teens.</p><a href="services.html" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLASS SCHEDULE ================= -->
+<section class="bg-alt" style="padding:100px 0;">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Weekly Plan</span>
+      <h2>Training Classes Schedule</h2>
+      <p>Book your slot — classes run daily across every training style.</p>
+    </div>
+    <div class="schedule-wrap">
+      <div class="schedule-tabs">
+        <button class="schedule-tab active" data-day="mon">Monday</button>
+        <button class="schedule-tab" data-day="wed">Wednesday</button>
+        <button class="schedule-tab" data-day="fri">Friday</button>
+      </div>
+      <div class="schedule-table-scroll">
+        <div data-schedule-day="mon">
+          <table class="schedule-table">
+            <thead><tr><th>Time</th><th>Class</th><th>Trainer</th><th>Location</th></tr></thead>
+            <tbody>
+              <tr><td>6:00 AM</td><td class="schedule-class-name">Strength Fundamentals<span>All levels</span></td><td>Marcus Reed</td><td>Strength Floor</td></tr>
+              <tr><td>8:00 AM</td><td class="schedule-class-name">Power Yoga<span>Beginner friendly</span></td><td>Priya Nair</td><td>Studio A</td></tr>
+              <tr><td>6:30 PM</td><td class="schedule-class-name">HIIT Circuit<span>High intensity</span></td><td>Elena Cruz</td><td>Studio B</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div data-schedule-day="wed" style="display:none;">
+          <table class="schedule-table">
+            <thead><tr><th>Time</th><th>Class</th><th>Trainer</th><th>Location</th></tr></thead>
+            <tbody>
+              <tr><td>6:00 AM</td><td class="schedule-class-name">Powerlifting Lab<span>Advanced</span></td><td>Marcus Reed</td><td>Strength Floor</td></tr>
+              <tr><td>7:30 AM</td><td class="schedule-class-name">Mobility Flow<span>All levels</span></td><td>Priya Nair</td><td>Studio A</td></tr>
+              <tr><td>7:00 PM</td><td class="schedule-class-name">Group HIIT<span>High intensity</span></td><td>Elena Cruz</td><td>Studio B</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div data-schedule-day="fri" style="display:none;">
+          <table class="schedule-table">
+            <thead><tr><th>Time</th><th>Class</th><th>Trainer</th><th>Location</th></tr></thead>
+            <tbody>
+              <tr><td>6:00 AM</td><td class="schedule-class-name">Strength Fundamentals<span>All levels</span></td><td>Marcus Reed</td><td>Strength Floor</td></tr>
+              <tr><td>9:00 AM</td><td class="schedule-class-name">Recovery Yoga<span>All levels</span></td><td>Priya Nair</td><td>Studio A</td></tr>
+              <tr><td>6:00 PM</td><td class="schedule-class-name">Friday Night Lights HIIT<span>High intensity</span></td><td>Elena Cruz</td><td>Studio B</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRAINERS ================= -->
+<section class="trainers-strip">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Meet The Coaches</span>
+      <h2>Meet Our Skilled Trainers</h2>
+      <p>Certified professionals who build every program around real progress.</p>
+    </div>
+    <div class="trainer-grid">
+      <div class="trainer-card reveal reveal-delay-1">
+        <div class="trainer-photo photo"><img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fm=webp&fit=crop&w=500&q=80" alt="Marcus Reed, strength coach" loading="lazy" />
+          <div class="trainer-social"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a></div>
+        </div>
+        <div class="trainer-info"><h3>Marcus Reed</h3><span>Strength Coach</span></div>
+      </div>
+      <div class="trainer-card reveal reveal-delay-2">
+        <div class="trainer-photo photo"><img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fm=webp&fit=crop&w=500&q=80" alt="Elena Cruz, HIIT coach" loading="lazy" />
+          <div class="trainer-social"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a></div>
+        </div>
+        <div class="trainer-info"><h3>Elena Cruz</h3><span>HIIT & Cardio</span></div>
+      </div>
+      <div class="trainer-card reveal reveal-delay-3">
+        <div class="trainer-photo photo"><img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?auto=format&fm=webp&fit=crop&w=500&q=80" alt="Priya Nair, yoga coach" loading="lazy" />
+          <div class="trainer-social"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a></div>
+        </div>
+        <div class="trainer-info"><h3>Priya Nair</h3><span>Yoga & Mobility</span></div>
+      </div>
+      <div class="trainer-card reveal reveal-delay-4">
+        <div class="trainer-photo photo"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fm=webp&fit=crop&w=500&q=80" alt="Karan Thakur, personal trainer" loading="lazy" />
+          <div class="trainer-social"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a></div>
+        </div>
+        <div class="trainer-info"><h3>Karan Thakur</h3><span>Personal Training</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BRAND STRIP ================= -->
+<section class="brand-strip">
+  <div class="container">
+    <div class="brand-strip-item"><i class="fa-solid fa-bolt"></i> PowerFlex</div>
+    <div class="brand-strip-item"><i class="fa-solid fa-heart-pulse"></i> VitalCore</div>
+    <div class="brand-strip-item"><i class="fa-solid fa-dumbbell"></i> IronPeak</div>
+    <div class="brand-strip-item"><i class="fa-solid fa-fire"></i> BurnLab</div>
+    <div class="brand-strip-item"><i class="fa-solid fa-shield-heart"></i> ProShield</div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section style="padding:100px 0;">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Membership</span>
+      <h2>Choose Your Plan</h2>
+      <p>Simple pricing, no hidden fees. Cancel or switch anytime.</p>
+    </div>
+    <div class="pricing-toggle-wrap">
+      <span class="label active">Monthly</span>
+      <div class="price-switch" id="price-switch"><div class="knob"></div></div>
+      <span class="label">Yearly</span>
+      <span class="save-chip">Save 20%</span>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal reveal-delay-1" data-monthly="₹1,499" data-yearly="₹14,390">
+        <div class="price-plan-icon"><i class="fa-solid fa-seedling"></i></div>
+        <h3>Basic</h3>
+        <div class="price-amount"><span class="price-amount-num">₹1,499</span><span>/mo</span></div>
+        <span class="price-period">billed monthly</span>
+        <ul class="price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Full gym floor access</li>
+          <li><i class="fa-solid fa-circle-check"></i> 2 group classes / week</li>
+          <li><i class="fa-solid fa-circle-check"></i> Locker access</li>
+          <li class="muted"><i class="fa-solid fa-circle-xmark"></i> Personal training</li>
+        </ul>
+        <a href="signup.html" class="btn btn-outline btn-block">Choose Plan</a>
+      </div>
+      <div class="price-card featured reveal reveal-delay-2" data-monthly="₹2,999" data-yearly="₹28,790">
+        <span class="price-badge">Most Popular</span>
+        <div class="price-plan-icon"><i class="fa-solid fa-fire"></i></div>
+        <h3>Pro</h3>
+        <div class="price-amount"><span class="price-amount-num">₹2,999</span><span>/mo</span></div>
+        <span class="price-period">billed monthly</span>
+        <ul class="price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Full gym floor access</li>
+          <li><i class="fa-solid fa-circle-check"></i> Unlimited group classes</li>
+          <li><i class="fa-solid fa-circle-check"></i> 2 personal training sessions</li>
+          <li><i class="fa-solid fa-circle-check"></i> Nutrition plan included</li>
+        </ul>
+        <a href="signup.html" class="btn btn-primary btn-block">Choose Plan</a>
+      </div>
+      <div class="price-card reveal reveal-delay-3" data-monthly="₹4,999" data-yearly="₹47,990">
+        <div class="price-plan-icon"><i class="fa-solid fa-crown"></i></div>
+        <h3>Elite</h3>
+        <div class="price-amount"><span class="price-amount-num">₹4,999</span><span>/mo</span></div>
+        <span class="price-period">billed monthly</span>
+        <ul class="price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Full gym floor access</li>
+          <li><i class="fa-solid fa-circle-check"></i> Unlimited group classes</li>
+          <li><i class="fa-solid fa-circle-check"></i> Unlimited personal training</li>
+          <li><i class="fa-solid fa-circle-check"></i> Nutrition + recovery plan</li>
+        </ul>
+        <a href="signup.html" class="btn btn-outline btn-block">Choose Plan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="testimonial-section">
+  <div class="container">
+    <div class="testimonial-slider">
+      <div class="testimonial-quote-mark">&ldquo;</div>
+      <div class="testi-track">
+        <div class="testi-slide">
+          <p>Stackly completely changed how I train. The coaches actually watch your form and adjust your plan every week — I've hit PRs I never thought possible.</p>
+          <div class="testimonial-person">
+            <div class="testimonial-avatar"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Rahul Sharma" loading="lazy" /></div>
+            <div class="testimonial-person-info"><strong>Rahul Sharma</strong><span>Pro Member, 2 years</span><div class="testimonial-stars">★★★★★</div></div>
+          </div>
+        </div>
+        <div class="testi-slide">
+          <p>The class schedule fits my crazy work hours perfectly, and the trainers genuinely care. Best gym decision I've made in years.</p>
+          <div class="testimonial-person">
+            <div class="testimonial-avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Meera Krishnan" loading="lazy" /></div>
+            <div class="testimonial-person-info"><strong>Meera Krishnan</strong><span>Elite Member, 1 year</span><div class="testimonial-stars">★★★★★</div></div>
+          </div>
+        </div>
+        <div class="testi-slide">
+          <p>From day one the nutrition coaching alone was worth the membership. Down 14kg and stronger than I've ever been.</p>
+          <div class="testimonial-person">
+            <div class="testimonial-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Arjun Verma" loading="lazy" /></div>
+            <div class="testimonial-person-info"><strong>Arjun Verma</strong><span>Pro Member, 8 months</span><div class="testimonial-stars">★★★★★</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BLOG PREVIEW ================= -->
+<section class="bg-alt" style="padding:100px 0;">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">From The Blog</span>
+      <h2>Latest Training Tips</h2>
+      <p>Straight-talk fitness advice from the Stackly coaching team.</p>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal reveal-delay-1">
+        <div class="blog-card-media"><span class="blog-date-chip"><strong>08</strong><span>Jul</span></span><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fm=webp&fit=crop&w=600&q=80" alt="Strength training article" loading="lazy" /></div>
+        <div class="blog-card-body"><div class="blog-meta"><span><i class="fa-solid fa-user"></i> Marcus Reed</span><span><i class="fa-solid fa-comment"></i> 12</span></div><h3>5 Strength Habits Every Beginner Should Build</h3><a href="#" class="blog-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a></div>
+      </div>
+      <div class="blog-card reveal reveal-delay-2">
+        <div class="blog-card-media"><span class="blog-date-chip"><strong>02</strong><span>Jul</span></span><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fm=webp&fit=crop&w=600&q=80" alt="Nutrition article" loading="lazy" /></div>
+        <div class="blog-card-body"><div class="blog-meta"><span><i class="fa-solid fa-user"></i> Priya Nair</span><span><i class="fa-solid fa-comment"></i> 8</span></div><h3>How Much Protein Do You Actually Need?</h3><a href="#" class="blog-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a></div>
+      </div>
+      <div class="blog-card reveal reveal-delay-3">
+        <div class="blog-card-media"><span class="blog-date-chip"><strong>27</strong><span>Jun</span></span><img src="https://images.unsplash.com/photo-1517960413843-0aee8e2b3285?auto=format&fm=webp&fit=crop&w=600&q=80" alt="Recovery article" loading="lazy" /></div>
+        <div class="blog-card-body"><div class="blog-meta"><span><i class="fa-solid fa-user"></i> Elena Cruz</span><span><i class="fa-solid fa-comment"></i> 5</span></div><h3>Why Recovery Days Matter More Than You Think</h3><a href="#" class="blog-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Ready To Start Your Fitness Journey With Stackly?</h2>
+    <a href="signup.html" class="btn btn-dark btn-lg">Join Now</a>
+  </div>
+</section>
+
+<!-- ================= NEWSLETTER ================= -->
+<section class="newsletter-band">
+  <div class="container">
+    <div class="newsletter-copy"><h2>Sign Up For Newsletter</h2><p>Weekly training tips, straight to your inbox.</p></div>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Enter your email address" required />
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+    <span class="form-msg"></span>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><span class="bolt"><img src="assets/logo-mark.svg" alt="" class="logo-mark" /></span>STACK<span class="brand-alt">LY</span></a>
+        <p>A performance-driven gym & fitness center helping members train smarter, recover better, and hit real goals.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="trainers.html">Trainers</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <div class="footer-links">
+          <a href="services.html#strength">Strength Training</a>
+          <a href="services.html#cardio">Cardio & HIIT</a>
+          <a href="services.html#yoga">Yoga & Mobility</a>
+          <a href="services.html#personal">Personal Training</a>
+        </div>
+        <div class="footer-gallery">
+          <a href="#" class="photo"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Gym gallery" loading="lazy" /></a>
+          <a href="#" class="photo"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Gym gallery" loading="lazy" /></a>
+          <a href="#" class="photo"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Gym gallery" loading="lazy" /></a>
+          <a href="#" class="photo"><img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Gym gallery" loading="lazy" /></a>
+          <a href="#" class="photo"><img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Gym gallery" loading="lazy" /></a>
+          <a href="#" class="photo"><img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Gym gallery" loading="lazy" /></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-location-dot"></i> 24 Iron Yard Road, Bengaluru, India</li>
+          <li><i class="fa-solid fa-phone"></i> +91 98765 43210</li>
+          <li><i class="fa-solid fa-envelope"></i> hello@stackly.com</li>
+          <li><i class="fa-solid fa-clock"></i> Mon–Sat: 5:00 AM – 11:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Stackly. All rights reserved.</span>
+      <div class="legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script src="script.js"></script>
+</body>
+</html>

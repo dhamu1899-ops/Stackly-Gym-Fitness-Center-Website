@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Us — Stackly</title>
+<meta name="description" content="Get in touch with Stackly — visit our gym, call, email, or send us a message to start your training journey." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="loader" role="status" aria-live="polite">
+  <div class="loader-inner">
+    <div class="loader-logo">STACK<span>LY</span></div>
+    <div class="loader-spinner"><svg viewBox="0 0 100 100"><circle class="track" cx="50" cy="50" r="42"></circle><circle class="active" cx="50" cy="50" r="42"></circle></svg></div>
+    <div class="loader-text">Loading…</div>
+  </div>
+</div>
+
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-meta">
+      <span><i class="fa-solid fa-phone"></i> +91 98765 43210</span>
+      <span><i class="fa-solid fa-envelope"></i> hello@stackly.com</span>
+      <span><i class="fa-solid fa-location-dot"></i> 24 Iron Yard Road, Bengaluru</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</div>
+
+<header class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><span class="bolt"><img src="assets/logo-mark.svg" alt="" class="logo-mark" /></span>STACK<span class="brand-alt">LY</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="trainers.html" class="nav-link">Trainers</a></li>
+      <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="login.html" class="nav-icon-btn" aria-label="Login"><i class="fa-solid fa-user"></i></a>
+      <a href="signup.html" class="btn btn-primary">Join Now</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-overlay">
+  <ul class="mobile-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="trainers.html">Trainers</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-actions">
+    <a href="login.html" class="btn btn-outline btn-block">Login</a>
+    <a href="signup.html" class="btn btn-primary btn-block">Join Now</a>
+  </div>
+  <div class="mobile-meta">
+    <span><i class="fa-solid fa-phone"></i>&nbsp; +91 98765 43210</span>
+    <span><i class="fa-solid fa-envelope"></i>&nbsp; hello@stackly.com</span>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Contact Us</h1>
+    <div class="breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span class="current">Contact</span></div>
+  </div>
+</section>
+
+<section style="padding:100px 0 0;">
+  <div class="container">
+    <div class="contact-info-grid">
+      <div class="contact-info-card reveal reveal-delay-1"><div class="service-icon"><i class="fa-solid fa-location-dot"></i></div><h3>Our Location</h3><p>24 Iron Yard Road, Bengaluru, India 560001</p></div>
+      <div class="contact-info-card reveal reveal-delay-2"><div class="service-icon"><i class="fa-solid fa-phone"></i></div><h3>Call Us</h3><p>+91 98765 43210<br>Mon–Sat: 5:00 AM – 11:00 PM</p></div>
+      <div class="contact-info-card reveal reveal-delay-3"><div class="service-icon"><i class="fa-solid fa-envelope"></i></div><h3>Email Us</h3><p>hello@stackly.com<br>We reply within 24 hours</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0;">
+  <div class="container">
+    <div class="contact-main">
+      <div class="contact-form-wrap">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Send Us A Message</h2>
+        <p>Have a question about membership, classes or trainers? Fill out the form and we'll get back to you within a day.</p>
+        <form id="contact-form" novalidate>
+          <div class="form-grid">
+            <div class="field"><label for="name">Full Name</label><input type="text" id="name" name="name" placeholder="Your name" /><span class="error-msg"></span></div>
+            <div class="field"><label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="you@email.com" /><span class="error-msg"></span></div>
+            <div class="field"><label for="phone">Phone (optional)</label><input type="tel" id="phone" name="phone" placeholder="+91 00000 00000" /><span class="error-msg"></span></div>
+            <div class="field"><label for="subject">Subject</label><input type="text" id="subject" name="subject" placeholder="Membership question" /><span class="error-msg"></span></div>
+            <div class="field full"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us how we can help..."></textarea><span class="error-msg"></span></div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+          <div class="form-status"></div>
+        </form>
+      </div>
+      <div class="contact-media photo">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fm=webp&fit=crop&w=700&q=80" alt="Stackly reception and gym floor" loading="lazy" />
+        <div class="contact-media-badge"><i class="fa-solid fa-clock"></i><div><strong>Open 7 Days</strong><span>5:00 AM – 11:00 PM</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 100px;">
+  <div class="container">
+    <div class="map-wrap">
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=77.590%2C12.970%2C77.650%2C13.010&layer=mapnik" title="Stackly location map" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="bg-alt" style="padding:100px 0;">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Questions</span>
+      <h2>Frequently Asked Questions</h2>
+      <p>Quick answers before you reach out.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">Do you offer a free trial? <i class="fa-solid fa-plus"></i></div>
+        <div class="faq-answer"><p>Yes, a free 1-day trial pass is available for first-time visitors — just call ahead to book.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What should I bring on my first visit? <i class="fa-solid fa-plus"></i></div>
+        <div class="faq-answer"><p>Comfortable workout clothes, shoes, and a water bottle. We provide towels and equipment.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Is parking available? <i class="fa-solid fa-plus"></i></div>
+        <div class="faq-answer"><p>Yes, free on-site parking is available for all members and visitors.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter-band">
+  <div class="container">
+    <div class="newsletter-copy"><h2>Sign Up For Newsletter</h2><p>Weekly training tips, straight to your inbox.</p></div>
+    <form class="newsletter-form"><input type="email" placeholder="Enter your email address" required /><button type="submit" class="btn btn-primary">Subscribe</button></form>
+    <span class="form-msg"></span>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><span class="bolt"><img src="assets/logo-mark.svg" alt="" class="logo-mark" /></span>STACK<span class="brand-alt">LY</span></a>
+        <p>A performance-driven gym & fitness center helping members train smarter, recover better, and hit real goals.</p>
+        <div class="footer-social"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-x-twitter"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></div>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><div class="footer-links"><a href="about.html">About Us</a><a href="services.html">Services</a><a href="trainers.html">Trainers</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a></div></div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <div class="footer-links"><a href="services.html#strength">Strength Training</a><a href="services.html#cardio">Cardio & HIIT</a><a href="services.html#yoga">Yoga & Mobility</a><a href="services.html#personal">Personal Training</a></div>
+        <div class="footer-gallery">
+          <a href="#" class="photo"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Gallery" loading="lazy" /></a>
+          <a href="#" class="photo"><img src="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Gallery" loading="lazy" /></a>
+          <a href="#" class="photo"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Gallery" loading="lazy" /></a>
+          <a href="#" class="photo"><img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Gallery" loading="lazy" /></a>
+          <a href="#" class="photo"><img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Gallery" loading="lazy" /></a>
+          <a href="#" class="photo"><img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?auto=format&fm=webp&fit=crop&w=200&q=80" alt="Gallery" loading="lazy" /></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-location-dot"></i> 24 Iron Yard Road, Bengaluru, India</li>
+          <li><i class="fa-solid fa-phone"></i> +91 98765 43210</li>
+          <li><i class="fa-solid fa-envelope"></i> hello@stackly.com</li>
+          <li><i class="fa-solid fa-clock"></i> Mon–Sat: 5:00 AM – 11:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Stackly. All rights reserved.</span>
+      <div class="legal-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="script.js"></script>
+</body>
+</html>

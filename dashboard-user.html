@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Dashboard — Stackly</title>
+<meta name="description" content="Your Stackly member dashboard — track workouts, book classes and manage your membership." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="loader" role="status" aria-live="polite">
+  <div class="loader-inner">
+    <div class="loader-logo">STACK<span>LY</span></div>
+    <div class="loader-spinner">
+      <svg viewBox="0 0 100 100">
+        <circle class="track" cx="50" cy="50" r="42"></circle>
+        <circle class="active" cx="50" cy="50" r="42"></circle>
+      </svg>
+    </div>
+    <div class="loader-text">Loading your training zone…</div>
+  </div>
+</div>
+
+<div class="dash-body">
+
+  <aside class="dash-sidebar">
+    <a href="index.html" class="nav-logo"><span class="bolt"><img src="assets/logo-mark.svg" alt="" class="logo-mark" /></span>STACK<span class="brand-alt">LY</span></a>
+    <nav class="dash-nav">
+      <a href="#" class="active" data-view="overview"><i class="fa-solid fa-grip"></i> Overview</a>
+      <a href="#" data-view="classes"><i class="fa-solid fa-calendar-days"></i> My Classes</a>
+      <a href="#" data-view="progress"><i class="fa-solid fa-chart-line"></i> Progress</a>
+      <a href="#" data-view="membership"><i class="fa-solid fa-id-card"></i> Membership</a>
+      <a href="#" data-view="nutrition"><i class="fa-solid fa-apple-whole"></i> Nutrition Plan</a>
+      <div class="dash-nav-group-label">Account</div>
+      <a href="#" data-view="profile"><i class="fa-solid fa-user"></i> Profile Settings</a>
+      <a href="#" data-view="notifications"><i class="fa-solid fa-bell"></i> Notifications</a>
+    </nav>
+    <div class="dash-sidebar-footer">
+      <div class="dash-user-card">
+        <div class="dash-user-avatar">RS</div>
+        <div>
+          <strong>Rahul Sharma</strong>
+          <span>Pro Member</span>
+        </div>
+      </div>
+      <a href="index.html" class="dash-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a>
+    </div>
+  </aside>
+
+  <div class="dash-main">
+    <div class="dash-topbar">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <button class="dash-sidebar-toggle" aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <h1>Welcome back, Rahul</h1>
+          <div class="dash-date">Monday, July 13, 2026</div>
+        </div>
+      </div>
+      <div class="dash-topbar-actions">
+        <button class="dash-icon-btn" aria-label="Notifications"><i class="fa-solid fa-bell"></i><span class="dot"></span></button>
+        <div class="dash-user-avatar">RS</div>
+      </div>
+    </div>
+
+    <div class="dash-content">
+
+      <div data-view-panel="overview">
+      <div class="kpi-grid">
+        <div class="kpi-card reveal reveal-delay-1">
+          <div class="kpi-top">
+            <div class="kpi-icon"><i class="fa-solid fa-dumbbell"></i></div>
+            <span class="kpi-trend up"><i class="fa-solid fa-arrow-up"></i> 12%</span>
+          </div>
+          <div class="kpi-value">18</div>
+          <div class="kpi-label">Workouts This Month</div>
+        </div>
+        <div class="kpi-card reveal reveal-delay-2">
+          <div class="kpi-top">
+            <div class="kpi-icon gold"><i class="fa-solid fa-fire"></i></div>
+            <span class="kpi-trend up"><i class="fa-solid fa-arrow-up"></i> 8%</span>
+          </div>
+          <div class="kpi-value">6,240</div>
+          <div class="kpi-label">Calories Burned</div>
+        </div>
+        <div class="kpi-card reveal reveal-delay-3">
+          <div class="kpi-top">
+            <div class="kpi-icon teal"><i class="fa-solid fa-bolt"></i></div>
+            <span class="kpi-trend up"><i class="fa-solid fa-arrow-up"></i> 3 days</span>
+          </div>
+          <div class="kpi-value">12</div>
+          <div class="kpi-label">Day Streak</div>
+        </div>
+        <div class="kpi-card reveal reveal-delay-4">
+          <div class="kpi-top">
+            <div class="kpi-icon"><i class="fa-solid fa-calendar-check"></i></div>
+            <span class="kpi-trend down"><i class="fa-solid fa-arrow-down"></i> 1</span>
+          </div>
+          <div class="kpi-value">5</div>
+          <div class="kpi-label">Classes Booked</div>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <div class="dash-card reveal">
+          <div class="dash-card-head">
+            <h3>Weekly Activity</h3>
+            <div class="chart-legend"><span><span class="dot" style="background:#ed1b2e;"></span> Calories Burned</span></div>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="activityChart"></canvas>
+          </div>
+        </div>
+
+        <div class="dash-card membership-card reveal">
+          <div class="badge-pill" style="margin-bottom:14px;"><i class="fa-solid fa-crown"></i> Active Plan</div>
+          <div class="membership-plan-name">Pro Membership</div>
+          <div class="membership-meta">Renews on Aug 14, 2026 · ₹2,999/mo</div>
+          <div class="goal-row">
+            <div class="goal-row-top"><span>Personal training sessions</span><span>1 / 2 used</span></div>
+            <div class="goal-bar"><div class="goal-bar-fill" data-goal="50"></div></div>
+          </div>
+          <div class="goal-row">
+            <div class="goal-row-top"><span>Weekly workout goal</span><span>4 / 5 days</span></div>
+            <div class="goal-bar"><div class="goal-bar-fill" data-goal="80"></div></div>
+          </div>
+          <div class="goal-row">
+            <div class="goal-row-top"><span>Monthly calorie goal</span><span>6,240 / 8,000</span></div>
+            <div class="goal-bar"><div class="goal-bar-fill" data-goal="78"></div></div>
+          </div>
+          <a href="pricing.html" class="btn btn-outline btn-block" style="margin-top:20px;">Manage Plan</a>
+        </div>
+      </div>
+
+      <div class="dash-card reveal">
+        <div class="dash-card-head">
+          <h3>Upcoming Classes</h3>
+          <a href="#" class="view-all">View All</a>
+        </div>
+        <div class="class-list">
+          <div class="class-row">
+            <div class="class-date"><span class="d">15</span><span class="m">Jul</span></div>
+            <div class="class-row-info">
+              <strong>HIIT Circuit</strong>
+              <span>7:00 AM · Coach Elena Cruz · Studio B</span>
+            </div>
+            <a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a>
+          </div>
+          <div class="class-row">
+            <div class="class-date"><span class="d">17</span><span class="m">Jul</span></div>
+            <div class="class-row-info">
+              <strong>Strength Fundamentals</strong>
+              <span>6:30 PM · Coach Marcus Reed · Strength Floor</span>
+            </div>
+            <a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a>
+          </div>
+          <div class="class-row">
+            <div class="class-date"><span class="d">19</span><span class="m">Jul</span></div>
+            <div class="class-row-info">
+              <strong>Power Yoga Flow</strong>
+              <span>8:00 AM · Coach Priya Nair · Outdoor Deck</span>
+            </div>
+            <a href="#" class="row-action"><i class="fa-solid fa-ellipsis"></i></a>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div data-view-panel="classes" style="display:none;">
+        <div class="dash-view-head"><h3>My Booked Classes</h3><a href="pricing.html" class="view-all">Book More</a></div>
+        <div class="class-list">
+          <div class="class-row"><div class="class-date"><span class="d">15</span><span class="m">Jul</span></div><div class="class-row-info"><strong>HIIT Circuit</strong><span>7:00 AM · Coach Elena Cruz · Studio B</span></div><span class="status-chip active">Confirmed</span></div>
+          <div class="class-row"><div class="class-date"><span class="d">17</span><span class="m">Jul</span></div><div class="class-row-info"><strong>Strength Fundamentals</strong><span>6:30 PM · Coach Marcus Reed · Strength Floor</span></div><span class="status-chip active">Confirmed</span></div>
+          <div class="class-row"><div class="class-date"><span class="d">19</span><span class="m">Jul</span></div><div class="class-row-info"><strong>Power Yoga Flow</strong><span>8:00 AM · Coach Priya Nair · Studio A</span></div><span class="status-chip active">Confirmed</span></div>
+          <div class="class-row"><div class="class-date"><span class="d">22</span><span class="m">Jul</span></div><div class="class-row-info"><strong>HIIT Circuit</strong><span>7:00 AM · Coach Elena Cruz · Studio B</span></div><span class="status-chip pending">Waitlisted</span></div>
+        </div>
+      </div>
+
+      <div data-view-panel="progress" style="display:none;">
+        <div class="dash-view-head"><h3>Your Progress</h3></div>
+        <div class="dash-card" style="margin-bottom:20px;">
+          <div class="goal-row"><div class="goal-row-top"><span>Weekly workout goal</span><span>4 / 5 days</span></div><div class="goal-bar"><div class="goal-bar-fill" data-goal="80"></div></div></div>
+          <div class="goal-row"><div class="goal-row-top"><span>Monthly calorie goal</span><span>6,240 / 8,000 kcal</span></div><div class="goal-bar"><div class="goal-bar-fill" data-goal="78"></div></div></div>
+          <div class="goal-row"><div class="goal-row-top"><span>Strength milestone (squat)</span><span>85 / 100 kg</span></div><div class="goal-bar"><div class="goal-bar-fill" data-goal="85"></div></div></div>
+        </div>
+        <div class="dash-table-wrap">
+          <table class="dash-table">
+            <thead><tr><th>Date</th><th>Workout</th><th>Duration</th><th>Calories</th></tr></thead>
+            <tbody>
+              <tr><td>12 Jul 2026</td><td>Strength Fundamentals</td><td>55 min</td><td>420</td></tr>
+              <tr><td>10 Jul 2026</td><td>HIIT Circuit</td><td>45 min</td><td>610</td></tr>
+              <tr><td>08 Jul 2026</td><td>Power Yoga Flow</td><td>50 min</td><td>280</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div data-view-panel="membership" style="display:none;">
+        <div class="dash-view-head"><h3>Membership Details</h3></div>
+        <div class="dash-card membership-card" style="max-width:480px;">
+          <div class="badge-pill" style="margin-bottom:14px;"><i class="fa-solid fa-crown"></i> Active Plan</div>
+          <div class="membership-plan-name">Pro Membership</div>
+          <div class="membership-meta">Renews on Aug 14, 2026 · ₹2,999/mo</div>
+          <a href="pricing.html" class="btn btn-primary btn-block" style="margin-top:20px;">Upgrade to Elite</a>
+          <a href="pricing.html" class="btn btn-outline btn-block" style="margin-top:12px;">Change Plan</a>
+        </div>
+        <div class="dash-table-wrap" style="margin-top:20px;">
+          <table class="dash-table">
+            <thead><tr><th>Date</th><th>Description</th><th>Amount</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>14 Jun 2026</td><td>Pro Membership — Monthly</td><td>₹2,999</td><td><span class="status-chip active">Paid</span></td></tr>
+              <tr><td>14 May 2026</td><td>Pro Membership — Monthly</td><td>₹2,999</td><td><span class="status-chip active">Paid</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div data-view-panel="nutrition" style="display:none;">
+        <div class="dash-view-head"><h3>Nutrition Plan</h3></div>
+        <div class="macro-grid">
+          <div class="macro-card"><strong>2,400</strong><span>Daily Calories</span></div>
+          <div class="macro-card"><strong>180g</strong><span>Protein</span></div>
+          <div class="macro-card"><strong>70g</strong><span>Fat</span></div>
+        </div>
+        <div class="dash-card">
+          <p style="color:var(--text-muted); font-size:0.92rem;">Built by your nutrition coach around your Pro Membership training load — high protein, moderate carb, timed around workout days.</p>
+        </div>
+      </div>
+
+      <div data-view-panel="profile" style="display:none;">
+        <div class="dash-view-head"><h3>Profile Settings</h3></div>
+        <div class="dash-card" style="max-width:480px;">
+          <div class="field"><label for="prof-name">Full Name</label><input type="text" id="prof-name" value="Rahul Sharma" /></div>
+          <div class="field"><label for="prof-email">Email Address</label><input type="email" id="prof-email" value="rahul.sharma@email.com" /></div>
+          <div class="field"><label for="prof-phone">Phone</label><input type="tel" id="prof-phone" value="+91 98765 43210" /></div>
+          <button type="button" class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+
+      <div data-view-panel="notifications" style="display:none;">
+        <div class="dash-view-head"><h3>Notifications</h3></div>
+        <div class="simple-list">
+          <div class="notif-row"><i class="fa-solid fa-calendar-check"></i><div><div class="sl-title">Class reminder</div><div class="sl-sub">HIIT Circuit starts tomorrow at 7:00 AM.</div></div></div>
+          <div class="notif-row"><i class="fa-solid fa-crown"></i><div><div class="sl-title">Membership renewal</div><div class="sl-sub">Your Pro Membership renews on Aug 14, 2026.</div></div></div>
+          <div class="notif-row"><i class="fa-solid fa-fire"></i><div><div class="sl-title">Streak milestone</div><div class="sl-sub">You've hit a 12-day workout streak — keep it going!</div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
