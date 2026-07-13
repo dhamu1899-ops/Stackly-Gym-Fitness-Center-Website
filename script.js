@@ -28,7 +28,62 @@ document.addEventListener("DOMContentLoaded", () => {
   initSocialAuthButtons();
   initDashboardViews();
   initGoBackButton();
+  initDashboardUserInfo();
+  initDashboardLogout();
 });
+
+/* ---------- Dashboard: show the logged-in user's info ----------
+   After a successful login, initAuthForms() stashes the email and a
+   derived display name in sessionStorage. On the dashboard pages we
+   read that back and update the welcome heading, avatar initials
+   (sidebar + topbar) and add the email next to the topbar avatar.
+   If nothing is in sessionStorage (dashboard opened directly, no
+   login), the original static demo content is left untouched. */
+function initDashboardUserInfo() {
+  const topbarH1 = document.querySelector(".dash-topbar h1");
+  if (!topbarH1) return;
+
+  const email = sessionStorage.getItem("stackly_user_email");
+  const name = sessionStorage.getItem("stackly_user_name");
+  if (!email || !name) return;
+
+  const firstName = name.split(" ")[0];
+  const initial = name.charAt(0).toUpperCase();
+
+  if (/^Welcome back/i.test(topbarH1.textContent)) {
+    topbarH1.textContent = "Welcome back, " + firstName;
+  }
+
+  document.querySelectorAll(".dash-user-avatar").forEach((el) => {
+    el.textContent = initial;
+  });
+
+  const sidebarName = document.querySelector(".dash-user-card strong");
+  if (sidebarName) sidebarName.textContent = name;
+
+  const topbarActions = document.querySelector(".dash-topbar-actions");
+  const topbarAvatar = topbarActions ? topbarActions.querySelector(".dash-user-avatar") : null;
+  if (topbarActions && topbarAvatar) {
+    let emailLabel = topbarActions.querySelector(".dash-user-email");
+    if (!emailLabel) {
+      emailLabel = document.createElement("span");
+      emailLabel.className = "dash-user-email";
+      topbarActions.insertBefore(emailLabel, topbarAvatar);
+    }
+    emailLabel.textContent = email;
+  }
+}
+
+/* Clear the session on logout so a fresh visit shows demo content again. */
+function initDashboardLogout() {
+  document.querySelectorAll(".dash-logout").forEach((link) => {
+    link.addEventListener("click", () => {
+      sessionStorage.removeItem("stackly_user_email");
+      sessionStorage.removeItem("stackly_user_name");
+      sessionStorage.removeItem("stackly_user_role");
+    });
+  });
+}
 
 /* ---------- Placeholder Links ----------
    Any <a href="#"> that isn't wired to a JS widget (all interactive
@@ -589,6 +644,24 @@ function initAuthForms() {
       const roleField = loginForm.querySelector('input[name="role"]:checked');
       const role = roleField ? roleField.value : "user";
       const destination = role === "admin" ? "dashboard-admin.html" : "dashboard-user.html";
+
+      // Capture the logged-in email and derive a display name from it so
+      // the destination dashboard can show "Welcome, <Name>" + initials.
+      const emailField = loginForm.querySelector('input[name="email"]');
+      const email = emailField ? emailField.value.trim() : "";
+      if (email) {
+        const localPart = email.split("@")[0];
+        const displayName = localPart
+          .replace(/[._-]+/g, " ")
+          .split(" ")
+          .filter(Boolean)
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(" ");
+        sessionStorage.setItem("stackly_user_email", email);
+        sessionStorage.setItem("stackly_user_name", displayName || "Member");
+        sessionStorage.setItem("stackly_user_role", role);
+      }
+
       setTimeout(() => {
         status.textContent = "Login successful — redirecting to your " + (role === "admin" ? "admin " : "") + "dashboard...";
         status.className = "form-status success";
@@ -769,7 +842,7 @@ function initDashCharts() {
         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
         datasets: [
           {
-            label: "Revenue (₹k)",
+            label: "Revenue (thousands)",
             data: [420, 460, 510, 495, 560, 610, 685],
             borderColor: "#ed1b2e",
             backgroundColor: "rgba(237, 27, 46, 0.15)",
