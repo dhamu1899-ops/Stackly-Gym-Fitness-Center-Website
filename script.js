@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initGoBackButton();
   initDashboardUserInfo();
   initDashboardLogout();
+  initHero3D();
 });
 
 /* ---------- Dashboard: show the logged-in user's info ----------
@@ -101,13 +102,17 @@ function initPlaceholderLinks() {
     });
   });
 
-  // Inside a dashboard, any non-functional content click (row actions,
-  // "view all" links, etc.) goes to the 404 page rather than home —
-  // sidebar menu items (data-view) and the explicit "Back to Website"
-  // / logout links are left alone since those are real navigation.
-  document.querySelectorAll('.dash-main a[href="#"]').forEach((a) => {
-    if (a.dataset.view) return;
-    a.addEventListener("click", (e) => {
+  // Inside a dashboard, EVERY content/action click (links or buttons —
+  // "Manage Plan", "Upgrade to Elite", "Save Changes", notification bell,
+  // row actions, "view all", etc.) goes to the 404 page only. It never
+  // navigates to home, pricing, or any other real page. The only
+  // exceptions are the sidebar menu items (data-view, client-side panel
+  // switching), the sidebar logo, and the logout link (real navigation),
+  // none of which live inside .dash-main.
+  document.querySelectorAll(".dash-main a, .dash-main button").forEach((el) => {
+    if (el.dataset.view) return;
+    if (el.classList.contains("dash-sidebar-toggle")) return;
+    el.addEventListener("click", (e) => {
       e.preventDefault();
       window.location.href = "404.html";
     });
@@ -115,6 +120,7 @@ function initPlaceholderLinks() {
 
   document.querySelectorAll('a[href="#"]').forEach((a) => {
     if (a.matches(socialSelector)) return;
+    if (a.classList.contains("forgot-link")) return;
     if (a.dataset.view) return;
     if (a.closest(".dash-main")) return;
     a.addEventListener("click", (e) => {
@@ -124,11 +130,20 @@ function initPlaceholderLinks() {
   });
 }
 
-/* ---------- Social Auth Buttons (Login / Signup) ---------- */
+/* ---------- Social Auth Buttons (Login / Signup) + Forgot Password ----------
+   Google / Apple continue-with buttons and the "Forgot password?" link are
+   demo-only (no real auth backend), so they route to the 404 page. */
 function initSocialAuthButtons() {
   document.querySelectorAll(".social-auth button").forEach((btn) => {
     btn.addEventListener("click", () => {
-      window.location.href = "index.html";
+      window.location.href = "404.html";
+    });
+  });
+
+  document.querySelectorAll(".forgot-link").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "404.html";
     });
   });
 }
@@ -505,7 +520,7 @@ function initContactForm() {
 
     if (!valid) {
       status.textContent = "Please fix the highlighted fields before submitting.";
-      status.className = "form-status error";
+      status.className = "form-status show error";
       return;
     }
 
@@ -517,7 +532,7 @@ function initContactForm() {
     // Simulated submit (frontend-only demo). Wire this to your backend/API.
     setTimeout(() => {
       status.textContent = "Thanks! Your message has been sent — we'll get back to you within 24 hours.";
-      status.className = "form-status success";
+      status.className = "form-status show success";
       form.reset();
       submitBtn.disabled = false;
       submitBtn.textContent = originalText;
@@ -634,7 +649,7 @@ function initAuthForms() {
       });
       if (!valid) {
         status.textContent = "Please fix the highlighted fields.";
-        status.className = "form-status error";
+        status.className = "form-status show error";
         return;
       }
       const btn = loginForm.querySelector('button[type="submit"]');
@@ -664,7 +679,7 @@ function initAuthForms() {
 
       setTimeout(() => {
         status.textContent = "Login successful — redirecting to your " + (role === "admin" ? "admin " : "") + "dashboard...";
-        status.className = "form-status success";
+        status.className = "form-status show success";
         setTimeout(() => {
           window.location.href = destination;
         }, 700);
@@ -709,12 +724,12 @@ function initAuthForms() {
       });
       if (terms && !terms.checked) {
         status.textContent = "Please accept the Terms & Privacy Policy to continue.";
-        status.className = "form-status error";
+        status.className = "form-status show error";
         return;
       }
       if (!valid) {
         status.textContent = "Please fix the highlighted fields.";
-        status.className = "form-status error";
+        status.className = "form-status show error";
         return;
       }
       const btn = signupForm.querySelector('button[type="submit"]');
@@ -722,10 +737,10 @@ function initAuthForms() {
       btn.disabled = true;
       btn.textContent = "Creating account...";
       setTimeout(() => {
-        status.textContent = "Account created — redirecting you to Stackly...";
-        status.className = "form-status success";
+        status.textContent = "Signup successful — redirecting you to login...";
+        status.className = "form-status show success";
         setTimeout(() => {
-          window.location.href = "index.html";
+          window.location.href = "login.html";
         }, 700);
       }, 800);
     });
@@ -913,4 +928,164 @@ function initGoBackButton() {
       window.location.href = "index.html";
     }
   });
+}
+
+/* ---------- Hero 3D Workout Animation (Three.js) ----------
+   Builds a small low-poly 3D humanoid rig that does a continuous
+   dumbbell bicep-curl while slowly rotating, rendered into the
+   hero visual. If Three.js failed to load (offline preview, blocked
+   CDN, etc.) the static photo fallback already in the markup stays
+   visible and this function quietly does nothing. */
+function initHero3D() {
+  const stage = document.getElementById("hero3d-stage");
+  const canvas = document.getElementById("hero3d-canvas");
+  if (!stage || !canvas || typeof THREE === "undefined") return;
+
+  const fallback = stage.querySelector(".hero-3d-fallback");
+
+  const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+  camera.position.set(0, 1.15, 6.4);
+  camera.lookAt(0, 0.9, 0);
+
+  const ambient = new THREE.AmbientLight(0xffffff, 0.55);
+  scene.add(ambient);
+  const key = new THREE.DirectionalLight(0xffffff, 1.05);
+  key.position.set(3, 5, 4);
+  scene.add(key);
+  const rim = new THREE.PointLight(0xed1b2e, 1.4, 12);
+  rim.position.set(-2.5, 2, -2);
+  scene.add(rim);
+  const fill = new THREE.PointLight(0x4a6cff, 0.35, 12);
+  fill.position.set(2.5, 0.5, 2.5);
+  scene.add(fill);
+
+  const bodyMat = new THREE.MeshStandardMaterial({ color: 0x20222c, roughness: 0.55, metalness: 0.15 });
+  const skinMat = new THREE.MeshStandardMaterial({ color: 0x9aa0b4, roughness: 0.5, metalness: 0.1 });
+  const accentMat = new THREE.MeshStandardMaterial({ color: 0xed1b2e, roughness: 0.35, metalness: 0.3, emissive: 0x4a0007, emissiveIntensity: 0.4 });
+  const metalMat = new THREE.MeshStandardMaterial({ color: 0x2c2e38, roughness: 0.3, metalness: 0.7 });
+
+  const rig = new THREE.Group();
+
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.34, 20, 16), skinMat);
+  head.position.set(0, 1.62, 0);
+  rig.add(head);
+
+  const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.14, 0.16, 12), skinMat);
+  neck.position.set(0, 1.34, 0);
+  rig.add(neck);
+
+  const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.46, 0.36, 1.05, 14), bodyMat);
+  torso.position.set(0, 0.75, 0);
+  rig.add(torso);
+
+  const hips = new THREE.Mesh(new THREE.CylinderGeometry(0.38, 0.3, 0.32, 14), bodyMat);
+  hips.position.set(0, 0.18, 0);
+  rig.add(hips);
+
+  const legGeo = new THREE.CylinderGeometry(0.16, 0.13, 0.95, 12);
+  const legL = new THREE.Mesh(legGeo, bodyMat);
+  legL.position.set(-0.19, -0.5, 0);
+  rig.add(legL);
+  const legR = new THREE.Mesh(legGeo, bodyMat);
+  legR.position.set(0.19, -0.5, 0);
+  rig.add(legR);
+
+  const footGeo = new THREE.BoxGeometry(0.22, 0.12, 0.38);
+  const footL = new THREE.Mesh(footGeo, accentMat);
+  footL.position.set(-0.19, -1.03, 0.08);
+  rig.add(footL);
+  const footR = new THREE.Mesh(footGeo, accentMat);
+  footR.position.set(0.19, -1.03, 0.08);
+  rig.add(footR);
+
+  // Static right arm, resting at the side
+  const armGeo = new THREE.CylinderGeometry(0.11, 0.09, 0.55, 10);
+  const rightArm = new THREE.Mesh(armGeo, skinMat);
+  rightArm.position.set(0.58, 0.62, 0);
+  rightArm.rotation.z = 0.12;
+  rig.add(rightArm);
+  const rightHand = new THREE.Mesh(new THREE.SphereGeometry(0.1, 12, 10), skinMat);
+  rightHand.position.set(0.62, 0.34, 0);
+  rig.add(rightHand);
+
+  // Animated left arm doing a dumbbell curl: shoulder pivot -> upper arm,
+  // elbow pivot -> forearm + dumbbell.
+  const shoulderPivot = new THREE.Group();
+  shoulderPivot.position.set(-0.58, 1.02, 0);
+  rig.add(shoulderPivot);
+
+  const upperArm = new THREE.Mesh(new THREE.CylinderGeometry(0.115, 0.1, 0.5, 10), skinMat);
+  upperArm.position.set(0, -0.25, 0);
+  shoulderPivot.add(upperArm);
+
+  const elbowPivot = new THREE.Group();
+  elbowPivot.position.set(0, -0.5, 0);
+  shoulderPivot.add(elbowPivot);
+
+  const forearm = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.09, 0.48, 10), skinMat);
+  forearm.position.set(0, -0.24, 0);
+  elbowPivot.add(forearm);
+
+  const dumbbell = new THREE.Group();
+  dumbbell.position.set(0, -0.48, 0);
+  const dbBar = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.42, 8), metalMat);
+  dbBar.rotation.z = Math.PI / 2;
+  dumbbell.add(dbBar);
+  const dbWeightGeo = new THREE.CylinderGeometry(0.11, 0.11, 0.12, 12);
+  const dbWeightL = new THREE.Mesh(dbWeightGeo, accentMat);
+  dbWeightL.rotation.z = Math.PI / 2;
+  dbWeightL.position.set(-0.18, 0, 0);
+  dumbbell.add(dbWeightL);
+  const dbWeightR = new THREE.Mesh(dbWeightGeo, accentMat);
+  dbWeightR.rotation.z = Math.PI / 2;
+  dbWeightR.position.set(0.18, 0, 0);
+  dumbbell.add(dbWeightR);
+  elbowPivot.add(dumbbell);
+
+  rig.position.y = -0.35;
+  rig.rotation.y = -0.45;
+  scene.add(rig);
+
+  function resize() {
+    const w = stage.clientWidth || 1;
+    const h = stage.clientHeight || 1;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  let rendered = false;
+  const clock = new THREE.Clock();
+
+  function animate() {
+    requestAnimationFrame(animate);
+    const t = clock.getElapsedTime();
+
+    // Bicep curl: elbow swings between resting and fully curled.
+    const curl = (Math.sin(t * 1.6) + 1) / 2; // 0..1
+    elbowPivot.rotation.x = -curl * 2.0;
+    shoulderPivot.rotation.x = -0.15 - curl * 0.08;
+
+    // Slow full-body showcase rotation + gentle idle bob.
+    rig.rotation.y += 0.0035;
+    rig.position.y = -0.35 + Math.sin(t * 1.1) * 0.02;
+
+    // Slight breathing scale on the torso for life-like motion.
+    torso.scale.y = 1 + Math.sin(t * 1.1) * 0.012;
+
+    renderer.render(scene, camera);
+
+    if (!rendered) {
+      rendered = true;
+      stage.classList.add("hero3d-ready");
+      if (fallback) fallback.style.display = "none";
+    }
+  }
+  animate();
 }
