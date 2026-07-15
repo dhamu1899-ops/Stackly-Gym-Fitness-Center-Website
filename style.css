@@ -302,13 +302,7 @@ section { position: relative; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .mobile-overlay {
-  margin-top: auto;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: var(--nav-height);
-  z-index: 999;
+  position: fixed; left: 0; right: 0; bottom: 0; top: var(--nav-height); z-index: 999;
   background: var(--ink);
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 34px;
   transform: translateY(-100%);
@@ -608,7 +602,7 @@ section { position: relative; }
 }
 .teaser-photo-main img { width: 100%; height: 100%; object-fit: cover; }
 .teaser-photo-float {
-  position: absolute; right: 10px; bottom: -30px;
+  position: absolute; right: -30px; bottom: -30px;
   width: 46%; aspect-ratio: 1/1;
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -1235,6 +1229,8 @@ table.dash-table tbody tr:last-child td { border-bottom: none; }
   .bmi-bar { margin-top: 34px; }
   .about-teaser .container { grid-template-columns: 1fr; }
   .teaser-media { max-width: 420px; margin: 0 auto; }
+  .teaser-photo-float { right: 8px; bottom: 8px; width: 40%; }
+  .teaser-exp-badge { left: 4px; }
   .contact-main { grid-template-columns: 1fr; }
   .contact-media { max-width: 460px; margin: 0 auto; }
   .service-detail .container { grid-template-columns: 1fr; }
@@ -1246,7 +1242,8 @@ table.dash-table tbody tr:last-child td { border-bottom: none; }
 @media (max-width: 1023px) {
   .nav-links, .nav-actions { display: none; }
   .nav-toggle { display: flex; }
-  .topbar-meta span:nth-child(3) { display: none; }
+  .topbar { display: none; }
+  .hero { min-height: auto; padding-top: 40px; }
   .kpi-grid { grid-template-columns: repeat(2, 1fr); }
   .dash-grid { grid-template-columns: 1fr; }
   .dash-sidebar { position: fixed; left: 0; top: 0; z-index: 900; transform: translateX(-100%); }
@@ -1320,6 +1317,7 @@ table.dash-table tbody tr:last-child td { border-bottom: none; }
   .hero-stats-row { flex-wrap: wrap; gap: 18px; }
   .brand-strip-track { gap: 44px; }
   .dash-topbar { flex-wrap: wrap; gap: 12px; }
+  .scroll-top { width: 40px; height: 40px; right: 16px; bottom: 16px; font-size: 0.85rem; }
 }
 
 @media (max-width: 480px) {
@@ -1342,7 +1340,11 @@ table.dash-table tbody tr:last-child td { border-bottom: none; }
 
 @media (max-width: 375px) {
   .hero-eyebrow { font-size: 0.72rem; padding: 6px 14px; }
-  .nav-logo { font-size: 1.25rem; }
+  .navbar .container { gap: 10px; }
+  .nav-logo { font-size: 1.1rem; gap: 8px; flex-shrink: 1; min-width: 0; white-space: nowrap; overflow: hidden; }
+  .nav-logo .bolt { width: 34px; height: 34px; border-radius: 10px; flex: none; }
+  .nav-logo .bolt img { width: 18px; }
+  .nav-toggle { flex: none; }
 }
 
 @media (min-width: 1440px) {

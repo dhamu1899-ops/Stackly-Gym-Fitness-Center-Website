@@ -31,7 +31,16 @@ document.addEventListener("DOMContentLoaded", () => {
   initDashboardUserInfo();
   initDashboardLogout();
   initHero3D();
+  initFooterYear();
 });
+
+/* ---------- Footer: always show the current year ---------- */
+function initFooterYear() {
+  const year = new Date().getFullYear();
+  document.querySelectorAll(".copyright-year").forEach((el) => {
+    el.textContent = year;
+  });
+}
 
 /* ---------- Dashboard: show the logged-in user's info ----------
    After a successful login, initAuthForms() stashes the email and a
@@ -309,7 +318,16 @@ function initNavbar() {
 function initMobileMenu() {
   const toggle = document.querySelector(".nav-toggle");
   const overlay = document.querySelector(".mobile-overlay");
+  const navbar = document.querySelector(".navbar");
   if (!toggle || !overlay) return;
+
+  // Position the overlay to start exactly below the real navbar (accounts for
+  // the .topbar row above it, which is only visible when the page is unscrolled).
+  const syncOverlayPosition = () => {
+    if (!navbar) return;
+    const bottom = navbar.getBoundingClientRect().bottom;
+    overlay.style.top = Math.max(bottom, 0) + "px";
+  };
 
   const closeMenu = () => {
     toggle.classList.remove("open");
@@ -319,11 +337,16 @@ function initMobileMenu() {
   };
 
   const openMenu = () => {
+    syncOverlayPosition();
     toggle.classList.add("open");
     overlay.classList.add("open");
     document.body.classList.add("no-scroll"); // lock background scroll; only overlay scrolls
     toggle.setAttribute("aria-expanded", "true");
   };
+
+  window.addEventListener("resize", () => {
+    if (overlay.classList.contains("open")) syncOverlayPosition();
+  });
 
   toggle.addEventListener("click", () => {
     const isOpen = overlay.classList.contains("open");
